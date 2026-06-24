@@ -1,0 +1,89 @@
+/* Hvězdička = platí pro všechno, Velikost boxu je taká jaká je např 300px + 20px padding není 320 ale vejde se do těch 300 jen dovnitř takže 280+20 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif; /* Nastavení fontu */
+    margin: 0; /* Nulový margin mezi tímto prvkem a ostatními místo toho dávám padding */
+    padding: 20px;
+    display: flex; /* Typ skládání flexbox */
+    flex-direction: column; /* Skládání do sloupce */
+    align-items: center; /* Vše v sloupci zarovnané na střed*/
+    transition: background-color 0.4s; /* Pro plynulejší změnu barvy */
+}
+
+/* Všechny prvky s třídou box, změněný border,padding...  */
+.box {
+    border: 2px solid darkblue; /* Ohraničení + barva */
+    padding: 20px;              /* padding - vnitřní okraj */
+    margin: 10px;                /* margin - vnější okraj */
+    width: 300px;
+    background-color: white;
+}
+/* Nová třída specificky pro vypis_dat.php */
+.box-siroky { 
+    width: 90%;
+    max-width: 800px;
+}
+
+/* Nastavení 30px mezery za prvkem  */
+nav {
+    margin-bottom: 30px;
+}
+
+
+.logout-link {   /* Styl pro logout tlačítko */
+    color: red; 
+    font-weight: bold;
+}
+
+form input, form textarea { /* Styl pro formulář  */
+    display: block;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.chyba {
+    color: red;
+}
+
+/* ZDE MÁM STYLY PŘEVÁŽNĚ PRO VYPIS_DAT.PHP */
+
+
+/* Styl pro tabulku ve výpisu */
+table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse; /* Spojí dvojité čáry do jedné */
+}
+
+table, th, td {
+    border: 1px solid black; /* Černý rámeček */
+}
+ 
+th {  /* Table header */
+    background-color: #eee; /* Šedé pozadí hlavičky */
+    padding: 8px;
+}
+
+tr {  /* Table Row */
+    border-bottom: 1px solid black; 
+}
+
+/* td = Table Data (standardní buňky s daty) */
+td {
+    padding: 8px;
+    border: 1px solid black;
+    word-break: break-all; /* Roztrhne brutálně dlouhá slova bez mezer */
+}
+
+
+/* Styl pro červené smazat */
+.delete-link {
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}

@@ -1,0 +1,25 @@
+services:
+  db: 
+    image: mariadb  # Použije obraz MariaDB z Docker Hubu
+    restart: always # Pokud spadne, automaticky se restartuje
+    environment: # Údaje pro prostředí
+      MYSQL_ROOT_PASSWORD: heslo 
+      MYSQL_DATABASE: moje_databaze
+      MYSQL_USER: student
+      MYSQL_PASSWORD: heslo
+    ports:
+      - "3306:3306" # Propojení portu: vnitřní 3306 v Dockeru na vnější 3306 v PC (AI mi pomáhá s vysvětlením)
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # Při startu spustí init.sql, což inicializuje tu databázi 
+
+  web:
+    image: php:8.2-apache # Obraz s PHP a webovým serverem Apache
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8080:80" # Web poběží na adrese localhost:8080
+    depends_on:
+      - db # První se spustí db, protože na ní web závisí (depends on)
+    
+    command: > # Tento příkaz doinstaluje PDO ovladač pro komunikaci s DB 
+      sh -c "docker-php-ext-install pdo pdo_mysql && apache2-foreground"
