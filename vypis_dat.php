@@ -1,14 +1,23 @@
 <?php
+// session_start() inicializuje/obnoví relaci (session)
 session_start();
 require 'db.php';
 
-// Ochrana - stejná jako v zadání dat
-if (!isset($_SESSION['prihlasen'])) { header("Location: index.php"); exit; }
+// Kontrola, zda je uživatel přihlášený. Pokud v $_SESSION není klíč tak vrátí zpět na index.php
+if (!isset($_SESSION['prihlasen']) || $_SESSION['prihlasen'] !== true) {
+    header("Location: index.php");
+    // ukončí skript
+    exit;
+}
 
-// Logika pro smazání (zkrácená verze)
+// Logika pro smazání záznamu 
 if (isset($_GET['smazat'])) {
-    $pdo->prepare("DELETE FROM tabulka WHERE id = :id")->execute(['id' => $_GET['smazat']]);
+    $stmt = $pdo->prepare("DELETE FROM tabulka WHERE id = :id");
+    $stmt->bindParam(':id', $_GET['smazat']);
+    $stmt->execute();
+    
     header("Location: vypis_dat.php");
+    // ukončí skript
     exit;
 }
 
@@ -18,7 +27,15 @@ $so = $_GET['so'] ?? '';
 
 // Zde mám nově LIKE, což vyhledá i částečnou shodu
 $stmt = $pdo->prepare("SELECT * FROM tabulka WHERE jmeno LIKE :sj AND text_dat LIKE :so ORDER BY id DESC");
-$stmt->execute(['sj' => "%$sj%", 'so' => "%$so%"]);
+
+// Vytvoření proměnných, protože bindParam potřebuje reálnou proměnnou
+$like_sj = "%$sj%";
+$like_so = "%$so%";
+
+$stmt->bindParam(':sj', $like_sj);
+$stmt->bindParam(':so', $like_so);
+
+$stmt->execute();
 $vysledky = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
