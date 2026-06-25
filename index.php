@@ -39,14 +39,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Můj Projekt - Login</title>
     <link rel="stylesheet" href="style.css"> </head>
 <body>
-    <nav> <strong><?php echo $config['web_nazev']; ?></strong>
+                 <!-- htmlspecialchars prevence Cross site scripting (XSS) útokům -->
+    <nav> <strong><?php echo htmlspecialchars($config['web_nazev']); ?></strong>
     </nav>
 
-    <div class="box">       <h1>Vstup</h1> 
-    <form method="POST">
-        <p>Jméno: <input type="text" name="uzivatel" required></p> 
-        <p>Heslo: <input type="password" name="heslo" required></p>
-        <button type="submit">Vstoupit</button> </form>
-        <p class="chyba"><strong><?php echo $zprava; ?></strong></p>
-</body>
+<div class="box">       
+        <h1>Vstup</h1> 
+        <form method="POST">
+            <p>Jméno: <input type="text" name="uzivatel" required></p> 
+            <p>Heslo: <input type="password" name="heslo" required></p>
+            <button type="submit">Vstoupit</button> 
+        </form>
+        <p class="chyba"><strong><?php echo htmlspecialchars($zprava); ?></strong></p>
+    </div> </body>
 </html>
