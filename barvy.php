@@ -1,9 +1,13 @@
 <?php
+// session_start() inicializuje/obnoví relaci (session)
 session_start(); 
+// Kontrola, zda je uživatel přihlášený. Pokud v $_SESSION není klíč tak vrátí zpět na index.php
 if (!isset($_SESSION['prihlasen']) || $_SESSION['prihlasen'] !== true) {
     header("Location: index.php");
+    // ukončí skript
     exit;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="cs">
