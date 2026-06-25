@@ -46,7 +46,11 @@ $vysledky = $stmt->fetchAll();
 </head>
 <body>
     <nav>
-        <a href="barvy.php">Barvy</a> | <a href="zadani_dat.php">Zadat</a> | <strong>VÝPIS</strong> | <a href="logout.php" class="logout-link">ODHLÁSIT</a>
+        <a href="barvy.php">Nastavení barev</a> | 
+        <a href="zadani_dat.php">Zadat data</a> | 
+        <strong>VÝPIS DAT</strong> |
+        <a href="logout.php" class="logout-link">ODHLÁSIT SE</a>
+
     </nav>
 
     <div class="box box-siroky">
