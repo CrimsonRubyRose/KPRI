@@ -1,19 +1,28 @@
 <?php
+// session_start() inicializuje/obnoví relaci (session)
 session_start();
 require 'db.php';
 $zprava = "";
 
-// Pokud nejsme přihlášeni, zpět na login
-if (!isset($_SESSION['prihlasen'])) { header("Location: index.php"); exit; }
+// Kontrola, zda je uživatel přihlášený. Pokud v $_SESSION není klíč tak vrátí zpět na index.php
+if (!isset($_SESSION['prihlasen']) || $_SESSION['prihlasen'] !== true) {
+    header("Location: index.php");
+    // ukončí skript
+    exit;
+}
 
 // V podstatě nic nového až na INSERT což vloží data
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $jmeno = trim($_POST['jmeno_dat']);
     $obsah = trim($_POST['obsah_dat']);
 
-    $sql = "INSERT INTO tabulka (jmeno, text_dat) VALUES (:jmeno, :obsah)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['jmeno' => $jmeno, 'obsah' => $obsah]);
+    $stmt = $pdo->prepare("INSERT INTO tabulka (jmeno, text_dat) VALUES (:jmeno, :obsah)");
+
+    $stmt->bindParam(':jmeno', $jmeno);
+    $stmt->bindParam(':obsah', $obsah);
+
+
+    $stmt->execute();
     $zprava = "Data uložena!";
 }
 ?>
