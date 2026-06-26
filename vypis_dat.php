@@ -42,7 +42,7 @@ $vysledky = $stmt->fetchAll();
 <html lang="cs">
 <head>
     <link rel="stylesheet" href="style.css">
-    <title>Výpis</title>
+    <title>Výpis dat</title>
 </head>
 <body>
     <nav>
