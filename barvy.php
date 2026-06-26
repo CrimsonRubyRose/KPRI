@@ -26,8 +26,7 @@ if (!isset($_SESSION['prihlasen']) || $_SESSION['prihlasen'] !== true) {
 
     <div class="box">
         <h1>Nastavení barev</h1>
-        <p>Vítejte!</p>
-        <p>Změň barvu pozadí pomocí tlačítek:</p>
+        <p>Změna barvy pozadí pomocí tlačítek:</p>
         
         <button onclick="zmenBarvu('green')">Zelená</button>
         <button onclick="zmenBarvu('blue')">Modrá</button>
