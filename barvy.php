@@ -15,7 +15,14 @@ if (!isset($_SESSION['prihlasen']) || $_SESSION['prihlasen'] !== true) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Výběr Barev</title>
-    <link rel="stylesheet" href="style.css"> <script src="main.js"></script> </head>
+
+
+    <link rel="stylesheet" href="style.css"> 
+    <script src="main.js"></script> 
+
+
+
+</head>
 <body>
 <nav>
     <strong>NASTAVENÍ BAREV</strong> | 
