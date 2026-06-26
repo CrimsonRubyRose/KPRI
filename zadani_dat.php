@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="cs">
 <head>
     <link rel="stylesheet" href="style.css">
-    <title>Zadání</title>
+    <title>Zadání dat</title>
 </head>
 <body>
 <nav>
