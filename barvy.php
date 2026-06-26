@@ -35,7 +35,7 @@ if (!isset($_SESSION['prihlasen']) || $_SESSION['prihlasen'] !== true) {
 
         <hr>
         
-        <p>Nebo napiš vlastní barvu (např. red, gold, #eee, nebo rgb(0,0,0)):</p>
+        <p>Nebo napište vlastní barvu (např. red, gold, #eee, nebo rgb(0,0,0)):</p>
         <input type="text" id="vlastniBarva" placeholder="Napiš barvu...">
         <button onclick="nastavVlastni()">Použít barvu</button>
     </div>
