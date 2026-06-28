@@ -15,15 +15,20 @@ if (!isset($_SESSION['prihlasen']) || $_SESSION['prihlasen'] !== true) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $jmeno = trim($_POST['jmeno_dat']);
     $obsah = trim($_POST['obsah_dat']);
+        if ($jmeno !== "" && $obsah !== "" ){ // Nově přidáno. Používám ===/==! pro přesnější kontrolu kde se bere i datový typ né jen hodnota
 
-    $stmt = $pdo->prepare("INSERT INTO tabulka (jmeno, text_dat) VALUES (:jmeno, :obsah)");
+        $stmt = $pdo->prepare("INSERT INTO tabulka (jmeno, text_dat) VALUES (:jmeno, :obsah)");
 
-    $stmt->bindParam(':jmeno', $jmeno);
-    $stmt->bindParam(':obsah', $obsah);
+        $stmt->bindParam(':jmeno', $jmeno);
+        $stmt->bindParam(':obsah', $obsah);
 
 
-    $stmt->execute();
-    $zprava = "Data uložena!";
+        $stmt->execute();
+        $zprava = "Data uložena!";
+    }
+    else {
+        $zprava = "Pole nesmí být prázdná";
+    }
 }
 ?>
 <!DOCTYPE html>
