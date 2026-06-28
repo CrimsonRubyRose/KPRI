@@ -4,7 +4,7 @@ require 'db.php';  // Načte naši databázi.  Dám formulář na insert
 
 // NAČTENÍ JSON SOUBORU
 $json_data = file_get_contents('config.json'); // Přečte soubor
-$config = json_decode($json_data, true);       // Přemění JSON na PHP pole
+$config = json_decode($json_data, true);       // Přemění JSON na PHP pole, (true umožňuje hranaté závorky zatím co false ne)
 
 $zprava = ""; // Inicializace + zpráva vždy existuje, jen je defaultně prázdná.
 
@@ -32,7 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-<!DOCTYPE html>   <html lang="cs">
+<!DOCTYPE html>   
+<html lang="cs">
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="style.css"> </head>
 <body>
                  <!-- htmlspecialchars prevence Cross site scripting (XSS) útokům -->
-    <nav> <strong><?php echo htmlspecialchars($config['web_nazev']); ?></strong>
+    <nav> 
+        <strong><?php echo htmlspecialchars($config['web_nazev']); ?></strong>
     </nav>
 
 <div class="box">       
@@ -50,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p>Heslo: <input type="password" name="heslo" required></p>
             <button type="submit">Vstoupit</button> 
         </form>
-        <p class="chyba"><strong><?php echo htmlspecialchars($zprava); ?></strong></p>
-    </div> </body>
+             <p class="chyba"><strong><?php echo htmlspecialchars($zprava); ?></strong></p>
+    </div> 
+</body>
 </html>
