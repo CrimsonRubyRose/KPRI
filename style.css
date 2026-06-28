@@ -1,36 +1,40 @@
-/* Hvězdička = platí pro všechno, Velikost boxu je taká jaká je např 300px + 20px padding není 320 ale vejde se do těch 300 jen dovnitř takže 280+20 */
+/* box-sizing funguje tak, že šířka prvku (např. 300px) v sobě už zahrnuje i vnitřní okraje (padding) a rámeček (border). */
+/*   * je Univerzální selektor (platí pro vše). */
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: sans-serif; /* Nastavení fontu */
-    margin: 0; /* Nulový margin mezi tímto prvkem a ostatními místo toho dávám padding */
-    padding: 20px;
-    display: flex; /* Typ skládání flexbox */
-    flex-direction: column; /* Skládání do sloupce */
-    align-items: center; /* Vše v sloupci zarovnané na střed*/
-    transition: background-color 0.4s; /* Pro plynulejší změnu barvy */
+    font-family: sans-serif; /* Nastavení fontu (sans-serif je bezpatkové písmo, bez nožiček,  serif = patkové) */
+    margin: 0;               /* Vynulování vnějšího okraje stránky */
+    padding: 20px;           /* Vnitřní okraj pro odsazení obsahu od krajů */
+    display: flex;           /* Typ skládání flexbox (Chytrý kontejner, poté určím do sloupců a vycentruj) */
+    flex-direction: column;  /* Skládání prvků pod sebe do sloupce */
+    align-items: center;     /* Vše v sloupci zarovnané na střed*/
+    transition: background-color 0.4s; /* Pro plynulejší přechod u změny barvy */
 }
 
-/* Všechny prvky s třídou box, změněný border,padding...  */
+/* Styl pro standardní obsahový box */
 .box {
-    border: 2px solid darkblue; /* Ohraničení + barva */
-    padding: 20px;              /* padding - vnitřní okraj */
-    margin: 10px;                /* margin - vnější okraj */
-    width: 300px;
-    background-color: white;
+    border: 2px solid darkblue; /* Tmavě modrý rámeček s tloušťkou 2px */
+    padding: 20px;                /* Vnitřní okraj */
+    margin: 10px;                 /* Vnější okraj */
+    width: 300px;                 /* Pevná šířka boxu */
+    background-color: white;    /* Bílé pozadí */
 }
-/* Nová třída specificky pro vypis_dat.php */
+
+/* Rozšíření boxu specificky pro stránku vypis_dat.php */
 .box-siroky { 
     width: 90%;
     max-width: 800px;
 }
 
-/* Nastavení 30px mezery za prvkem  */
+/* Nastavení navigačního menu */
 nav {
-    margin-bottom: 30px;
+    margin-bottom: 30px; /* Mezera pod navigací */
 }
+
+
 
 
 .logout-link {   /* Styl pro logout tlačítko */
@@ -38,17 +42,19 @@ nav {
     font-weight: bold;
 }
 
-form input, form textarea { /* Styl pro formulář  */
-    display: block;
-    margin-bottom: 15px;
-    width: 100%;
+/* Nastavení prvků uvnitř formuláře */
+form input, form textarea { 
+    display: block;      /* Každý prvek bude na samostatném řádku */
+    margin-bottom: 15px; /* Mezera pod prvkem */
+    width: 100%;         /* Roztažení na celou šířku formuláře */
 }
 
+/* Třída pro chybové hlášky */
 .chyba {
     color: red;
 }
 
-/* ZDE MÁM STYLY PŘEVÁŽNĚ PRO VYPIS_DAT.PHP */
+/* --- STYLY PRO TABULKU (převážně vypis_dat.php) --- */
 
 
 /* Styl pro tabulku ve výpisu */
@@ -62,28 +68,28 @@ table, th, td {
     border: 1px solid black; /* Černý rámeček */
 }
  
-th {  /* Table header */
+th {  /* Hlavička tabulky (Table header) */
     background-color: #eee; /* Šedé pozadí hlavičky */
     padding: 8px;
 }
 
-tr {  /* Table Row */
+tr {  /* Řádek tabulky (Table Row) */
     border-bottom: 1px solid black; 
 }
 
-/* td = Table Data (standardní buňky s daty) */
-td {
+
+td { /* Buňka s daty (Table Data)*/
     padding: 8px;
     border: 1px solid black;
-    word-break: break-all; /* Roztrhne brutálně dlouhá slova bez mezer */
+    word-break: break-all; /* Automaticky zalomí extrémně dlouhá slova bez mezer */
 }
 
 
-/* Styl pro červené smazat */
+/* Styl pro odkaz na smazání záznamu (křížek) */
 .delete-link {
     color: red;
     font-weight: bold;
-    text-decoration: none;
+    text-decoration: none; /* Odstraní podtržení odkazu */
     display: block;
     text-align: center;
 }
