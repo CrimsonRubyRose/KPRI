@@ -58,8 +58,8 @@ $vysledky = $stmt->fetchAll();
         <h1>Uložená data</h1>
         
         <form method="GET">
-            <input type="text" name="sj" placeholder="Jméno" value="<?php echo $sj; ?>">
-            <input type="text" name="so" placeholder="Obsah" value="<?php echo $so; ?>">
+            <input type="text" name="sj" placeholder="Jméno" value="<?php echo htmlspecialchars($sj); ?>">
+            <input type="text" name="so" placeholder="Obsah" value="<?php echo htmlspecialchars($so); ?>">
             <button type="submit">Hledat</button>
         </form>
 
