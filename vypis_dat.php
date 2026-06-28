@@ -28,7 +28,7 @@ $so = $_GET['so'] ?? '';
 // Zde mám nově LIKE, což vyhledá i částečnou shodu
 $stmt = $pdo->prepare("SELECT * FROM tabulka WHERE jmeno LIKE :sj AND text_dat LIKE :so ORDER BY id DESC");
 
-// Vytvoření proměnných, protože bindParam potřebuje reálnou proměnnou
+// Vytvoření proměnných (%% znamená jakýkoliv znak proto jako like), protože bindParam potřebuje reálnou proměnnou
 $like_sj = "%$sj%";
 $like_so = "%$so%";
 
@@ -45,6 +45,7 @@ $vysledky = $stmt->fetchAll();
     <title>Výpis dat</title>
 </head>
 <body>
+
     <nav>
         <a href="barvy.php">Nastavení barev</a> | 
         <a href="zadani_dat.php">Zadat data</a> | 
